@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import User from "../database/models/userModel";
 import bcrypt from "bcrypt";
+import generateToken from "../services/generateToken";
 
 
 class UserController {
@@ -58,9 +59,12 @@ class UserController {
                     message: "Invalid Password From the user😢"
                 })
             }else{
+
+                 const token = generateToken(user.id)
                 // if Password milyo vnney --> JWT token
                 res.status(200).json({
-                    message : "Logged in Sucessfully❤😍"
+                    message : "Logged in Sucessfully❤😍",
+                    token 
                 })
             }
      }
