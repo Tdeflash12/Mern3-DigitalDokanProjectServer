@@ -1,12 +1,11 @@
+import express from 'express';
+import UserController from '../controllers/userController';
 
-import express from 'express'
-import UserController from '../controllers/userController'
-const router = express.Router()
+const router = express.Router();
 
-// router.post("/register",UserController.register)
-// router.get("/register",UserController.register)
+// Define routes
+router.route("/register").post(UserController.register);
+router.route("/login").post(UserController.login);
+router.route("/forgot-password").post(UserController.handleForgotPassword);
 
-router.route("/register").post(UserController.register)
-router.route("/login").post(UserController.login)
-
-export default router 
+export default router;
